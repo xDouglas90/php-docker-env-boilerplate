@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  app:
+    build: ./
+    container_name: assignment_tracker-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: mysql:5.7
+    container_name: assignment_tracker-db
+    restart: unless-stopped
+    ports:
+      - 6666:3306  
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: 'assignment_tracker'
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+
+  nginx:
+    build: ./.docker/nginx
+    container_name: assignment_tracker-nginx
+    restart: always
+    ports:
+      - "8081:80"
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - app
+
+  redis:
+    image: redis
+    container_name: assignment_tracker-redis
+    expose:
+    - 6379
+  
