@@ -18,7 +18,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install mbstring pdo pdo_mysql exif pcntl gd bcmath
 
 RUN rm -rf /var/www/html
-RUN ln -s public html
+RUN ln -s src html
 
 # Create system user to run Composer and Artisan Commands
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
