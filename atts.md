@@ -27,4 +27,8 @@
 		```
 		- This creates a special type of volume which isn’t mapped to the local filesystem. This will be where the data for MySQL is stored — all your tables, records etc. The reason to don't use a folder in the local file system is that when the application is uploaded to a real web server, don’t  overwrite the real database with your test one. All your test/development environment records will be stored in here. This allows you to have a different database on the live server and development server when you come to uploading your app.
 
+- ### 03/20/2022
+
+	- Changed the name of the folder with code files from `public` to `src`, as a matter of project architecture best practice.
+
 ### End
