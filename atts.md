@@ -29,6 +29,6 @@
 
 - ### 03/26/2022
 
-	- Changed the name of the folder with code files from `public` to `src`, as a matter of project architecture best practice.
+	- Changed the name of the folder with code files from `public` to `src`, as a matter of project architecture best practice, according to [PSR-4](https://www.php-fig.org/psr/psr-4/).
 
 ### End
