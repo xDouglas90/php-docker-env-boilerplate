@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.1-fpm
 ARG uid=1000
 ARG user=trapdev
 
